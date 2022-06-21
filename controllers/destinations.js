@@ -1,5 +1,9 @@
 const Flight = require('../models/flight')
 
+module.exports = {
+    create
+  };
+
 function create(req, res) {
     Flight.findById(req.params.id, function(err, flight) {
         // We can push subdocs into mongoose arrays
@@ -11,8 +15,3 @@ function create(req, res) {
         })
     })
 }
-
-
-module.exports = {
-  create
-};
