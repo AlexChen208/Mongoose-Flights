@@ -24,7 +24,7 @@
     <option value="SAN">SAN</option>
   </select>
   <label>Arrival:</label>
-    <input type="date" name="arrival">
+    <input type="datetime-local" name="arrival">
 
   <input type="submit" value="Add">
 </form>
@@ -49,4 +49,7 @@
 <% } else { %>
   <h5>No destination yet!</h5>
 <% } %>
+
+<a href="/flights/${flight._id}/tickets/new">Add Ticket</a>
+
 <%- include('../partials/footer') %>
