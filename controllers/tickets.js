@@ -7,15 +7,13 @@ module.exports = {
   };
 
   function create(req, res) {
-    Flight.findById(req.params.id, function(err, flight) {
-        Ticket.find({flight: flight._id}, function(err, tickets) {
-          // Now you can pass both the flight and tickets in the res.render call
-          res.render('flights/show', {flight, tickets})
-        });
-    });
+    const flightId = req.params.id
+    req.body.flight = flightId
+    Ticket.create(req.body, function(err, ticket) {
+      res.redirect(`/flights/${flightId}`)
+    })
   }
 
   function newTicket(req, res) {
-    const flightId = req.params.id
     res.render('tickets/new', {flightId: req.params.id})
   }
