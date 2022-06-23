@@ -16,10 +16,6 @@ module.exports = {
   }
 
   function newTicket(req, res) {
-    Ticket.find({}, function (err, tickets) {
-      res.render('tickets/new', {
-        title: 'Add Ticket',
-        tickets
-      });
-    })
+    const flightId = req.params.id
+    res.render('tickets/new', {flightId: req.params.id})
   }
